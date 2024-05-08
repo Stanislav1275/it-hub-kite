@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="060181bc-badb-436b-83d4-cde4d7209718" name="ithub">
+        <fileTransfer rootFolder="/front/my-app" accessType="SFTP" host="77.222.53.231" port="22" sshConfigId="460f5b38-b761-4996-b7fa-b87a16402f15" sshConfig="root@77.222.53.231:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
