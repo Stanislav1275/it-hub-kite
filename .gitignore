@@ -36,11 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
-/.idea/codeStyles/codeStyleConfig.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/my-app.iml
-/.idea/codeStyles/Project.xml
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/vcs.xml
+.idea
+/.idea/deployment.xml
+.idea/deployment.xml
+
 /yarn.lock
