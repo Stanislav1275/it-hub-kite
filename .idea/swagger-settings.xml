@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SwaggerSettings">
+    <remoteSpecificationUrls>
+      <UrlInfo>
+        <option name="urlString" value="http://77.222.53.231:8080/swagger/index.html#/" />
+      </UrlInfo>
+      <UrlInfo>
+        <option name="urlString" value="http://77.222.53.231:8080/swagge" />
+      </UrlInfo>
+    </remoteSpecificationUrls>
+  </component>
+</project>
