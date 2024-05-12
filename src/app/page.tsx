@@ -1,4 +1,4 @@
-import { Div } from '@/components/ui/div';
+import { Div } from '@/shared/ui/div';
 import { Suspense } from 'react';
 
 

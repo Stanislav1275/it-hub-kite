@@ -6,6 +6,8 @@
 import { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ThemeProvider } from '@/shared/ui/theme';
+import { Theme } from '@radix-ui/themes';
 
 function makeQueryClient() {
     return new QueryClient({
@@ -44,10 +46,12 @@ export default function Providers({ children }:{children:ReactNode}) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <>
-                {children}
-                <ReactQueryDevtools initialIsOpen={false} />
-            </>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+                <Theme hasBackground={false} radius="full">
+                    {children}
+                </Theme>
+            </ThemeProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     )
 }

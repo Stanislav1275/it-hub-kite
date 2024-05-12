@@ -1,9 +1,9 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@/shared/ui/button';
+import { useToast } from '@/shared/ui/use-toast';
 import { useMutation } from '@tanstack/react-query';
 import { axiosInstance } from '@/shared/lib/axios/instance';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const toBase64 = (file: File): Promise<string> =>
@@ -22,9 +22,20 @@ export const Div = () => {
             password: 'dsds'
         }, {}).then(v => v.data)
     });
+    const {mutate, isError} = useMutation({mutationFn:async (data: { file: File }) => {
+        const formdata = new FormData();
+        formdata.append('file', data.file);
+        await fetch('/api/upload', { body:formdata, method:'POST' });
+        }})
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const [image, setImage] = useState<string>('');
+    const imageRef = useRef<string>('');
+    const fileRef = useRef<File>();
+    const [file, setFile] = useState<File | null>(null);
+    const image = useMemo(() => {
+        return  imageRef.current && <Image loading="lazy" width={60} height={60} src={imageRef.current || ''} alt="картинки" />
+
+    }, [file])
     return (
         <div>
             <Button onClick={() => toast({ variant: 'destructive', description: 'Абоба' })}
@@ -39,17 +50,8 @@ export const Div = () => {
             <svg />
             <Button variant="default">клик</Button>
             <Button onClick={async () => {
-                await fetch('/api', {method:'POST'})
+                // await axios.('/upload', {method:'POST'}).finally(console.log)
             }} variant="ghost">клик</Button>
-            <input accept="image/*"
-                   type="file"
-                   onChange={async (e) => {
-                       const file = e?.target?.files?.[0];
-                       if(!file) return;
-                       const base64 = await toBase64(file);
-                       setImage(base64);
-                   }}
-                   multiple={false} ref={inputRef} id='file' style={{display:'none'}}/>
             <Button
                 role="button"
                 aria-label="прикрепить картинку поста"
@@ -57,10 +59,24 @@ export const Div = () => {
                 color="textPrimary"
                 onClick={() => inputRef?.current?.click()}
             >
-               прикрепить
+                прикрепить
             </Button>
-            <Image src={image??''} alt='картинки'/>
-            <Button variant="outline">Файл грузи</Button>
+            <input accept="image/*"
+                   type="file"
+                   onChange={async (e) => {
+                       const file = e?.target?.files?.[0];
+                       fileRef.current = file;
+                       imageRef.current =  await toBase64(file);
+                       if(!file) return;
+                       setFile(file);
+                   }}
+                   multiple={false} ref={inputRef} id='file' style={{display:'none'}}/>
+            {image}
+            <Button onClick={() => {
+                if(file) {
+                    mutate({file:file||fileRef.current})
+                }
+            }} variant="outline">Файл грузи</Button>
             <Button variant="link">клик</Button>
         </div>
 
