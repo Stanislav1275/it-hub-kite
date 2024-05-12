@@ -20,10 +20,15 @@ const useSignIn = () =>
         mutationFn: (data) => axiosInstance.post('/signin', data).then((v) => v.data),
     });
 export const getCurrentUserQueryOptions = () => ({
-    queryFn: () => axiosInstance.get<UserType>('/current').then((v) => v.data),
+    queryFn: async () => {
+        return await axiosInstance
+            .get<UserType>('/current')
+            .then((v) => v.data)
+            .catch((v) => undefined);
+    },
     queryKey: SessionKeys.getCurrentUser(),
 });
 
 export const useCurrentUser = () => {
-    return useQuery(getCurrentUserQueryOptions());
+    return useQuery({ ...getCurrentUserQueryOptions(), refetchOnMount: false });
 };

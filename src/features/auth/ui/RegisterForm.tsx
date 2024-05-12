@@ -50,6 +50,8 @@ export const RegisterForm = () => {
         } catch (e) {
             if (axios.isAxiosError(e)) {
                 toast({ variant: 'destructive', description: `Ошибка сервера: ${e?.response?.data.message}` });
+            } else {
+                throw e;
             }
         }
     };

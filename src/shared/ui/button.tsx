@@ -15,6 +15,7 @@ const buttonVariants = cva(
                 secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
                 ghost: 'hover:bg-accent hover:text-accent-foreground',
                 link: 'text-primary underline-offset-4 hover:underline',
+                primary: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
             },
             size: {
                 default: 'h-9 px-4 py-2',
@@ -38,7 +39,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, loading, variant, children, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
     return (
-        <Comp disabled={loading || props.disabled} className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        <Comp
+            style={{ cursor: 'pointer' }}
+            disabled={loading || props.disabled}
+            className={cn(buttonVariants({ variant, size, className }))}
+            ref={ref}
+            {...props}
+        >
             <>
                 {loading && <Loader2 className={cn('h-4 w-4 animate-spin', children && 'mr-2')} />}
                 {children}

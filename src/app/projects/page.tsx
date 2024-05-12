@@ -1,21 +1,17 @@
 import { Suspense } from 'react';
 import { Projects } from '@/entities/project/ui/Projects';
-import { getQueryClient } from '@/shared/lib/query';
-import { getCurrentUserQueryOptions } from '@/entities/session/model/queries';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { ErrorBoundary } from '@/shared/lib/errorhandling/ErrorBoundary';
+import { Layout } from '@/widgets/Layout';
 
 async function ProjectsPage() {
-    const queryClient = getQueryClient();
-    await queryClient.prefetchQuery(getCurrentUserQueryOptions());
-
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <Layout>
             <Suspense fallback="...loading">
-                <HydrationBoundary state={dehydrate(queryClient)}>
+                <ErrorBoundary>
                     <Projects />
-                </HydrationBoundary>
+                </ErrorBoundary>
             </Suspense>
-        </main>
+        </Layout>
     );
 }
 

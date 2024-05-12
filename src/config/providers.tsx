@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/shared/ui/theme';
 import { Theme } from '@radix-ui/themes';
 import { getQueryClient } from '@/shared/lib/query/queryClient';
 import { ErrorBoundary } from 'react-error-boundary';
+import { DeviceDetectProvider } from '@/shared/lib/media/context';
 
 export default function Providers({ children }: { children: ReactNode }) {
     // NOTE: Avoid useState when initializing the query client if you don't
@@ -33,3 +34,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         </ErrorBoundary>
     );
 }
+export const ClientProviders = ({ userAgent, children }: { userAgent: string; children: ReactNode }) => {
+    'use client';
+    return <DeviceDetectProvider userAgent={userAgent}>{children}</DeviceDetectProvider>;
+};
