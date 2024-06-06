@@ -1,7 +1,19 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 #About Project Ru
 ```
-  Проект симуляция создания команд и проектов, путем задания нескольких резюме на странице и в последствии подачи заявок в команду. Бэк реальный, реализовано: регистрация, настройка профиля, создание резюме/команды, подача резюме в команду, принятие человека в команду. Стэк: next.js app layout, typescript, redix ui, react query, FSD(очень даже неплохо), ssr(частично из-за проблем с новой версией next и react query  
+  Проект симуляция создания команд и проектов,
+путем задания нескольких резюме на странице и в
+последствии подачи заявок в команду. Бэк реальный, реализовано:
+регистрация, настройка профиля, создание резюме/команды, подача резюме в команду, принятие человека в команду.
+ Стэк: next.js app layout, typescript,
+ radix ui, react query,
+ FSD(очень даже неплохо),
+ react-hook-form, zod,
+tailwind,
+ssr(частично из-за проблем с новой версией next и react query
+Из тех.недоделок:нормальное ssr через suspenseQuery
+ typewind, casl/ability для определения прав юзера,
+zustand, optimistic updates вместо revalidate 
 ```
 ## Getting Started
 
