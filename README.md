@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+#About Project Ru
+```
+  Проект симуляция создания команд и проектов, путем задания нескольких резюме на странице и в последствии подачи заявок в команду. Бэк реальный, реализовано: регистрация, настройка профиля, создание резюме/команды, подача резюме в команду, принятие человека в команду. Стэк: next.js app layout, typescript, redix ui, react query, FSD(очень даже неплохо), ssr(частично из-за проблем с новой версией next и react query  
+```
 ## Getting Started
 
 First, run the development server:
@@ -34,3 +37,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
